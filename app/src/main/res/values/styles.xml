@@ -1,51 +1,74 @@
 <resources>
 
-     Base application theme.
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <!--<item name="android:textViewStyle">@style/FontSizeMedium</item>-->
-        <!--<item name="android:textColor">@color/colorPrimary</item>-->
     </style>
 
-    <style name="Theme.TextSmall" parent="AppTheme">
-        <item name="android:textViewStyle">@style/FontSizeSmall</item>
+    <!-- Base TextStyle1 -->
+    <style name="TextStyle1" parent="android:style/Widget.TextView">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
     </style>
 
-    <style name="Theme.TextMedium" parent="AppTheme">
-        <item name="android:textViewStyle">@style/FontSizeMedium</item>
-    </style>
-
-    <style name="Theme.TextLarge" parent="AppTheme">
-        <item name="android:textViewStyle">@style/FontSizeLarge</item>
-    </style>
-
-    <style name="FontSizeSmall" parent="AppTheme">
-        <item name="android:textSize">12sp</item>
-    </style>
-
-    <style name="FontSizeMedium" parent="AppTheme">
-        <item name="android:textSize">24sp</item>
-    </style>
-
-    <style name="FontSizeLarge" parent="AppTheme">
-        <item name="android:textSize">36sp</item>
-    </style>
-
-    <style name="TextBlockStyle" parent="android:style/Widget.TextView">
-        <item name="android:textSize">8sp</item>
+    <!-- Base TextStyle2 -->
+    <style name="TextStyle2" parent="android:style/Widget.TextView">
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textColor">@color/colorPrimary</item>
     </style>
 
 
-    <!-- Override TextBlockStyle style for AppThemeLight -->
-    <style name ="AppThemeLightTextBlockStyle" parent="@style/TextBlockStyle">
+    <!-- Override Small Theme -->
+
+    <style name="ThemeSmallFont" parent="AppTheme">
+        <item name="TextStyle1">@style/TextStyle1SmallFont</item>
+        <item name="TextStyle2">@style/TextStyle2SmallFont</item>
+    </style>
+
+    <!-- Override Medium Theme -->
+
+    <style name="ThemeMediumFont" parent="AppTheme">
+        <item name="TextStyle1">@style/TextStyle1MediumFont</item>
+        <item name="TextStyle2">@style/TextStyle2MediumFont</item>
+    </style>
+
+    <!-- Override Large Theme -->
+
+    <style name="ThemeLargeFont" parent="AppTheme">
+        <item name="TextStyle1">@style/TextStyle1LargeFont</item>
+        <item name="TextStyle2">@style/TextStyle2LargeFont</item>
+    </style>
+
+    <!-- Small Size override styles -->
+
+    <style name="TextStyle1SmallFont" parent="@style/TextStyle1">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="TextStyle2SmallFont" parent="@style/TextStyle2">
+        <item name="android:textSize">10sp</item>
+    </style>
+
+    <!-- Medium Size override styles -->
+
+    <style name="TextStyle1MediumFont" parent="@style/TextStyle1">
+        <item name="android:textSize">28sp</item>
+    </style>
+
+    <style name ="TextStyle2MediumFont" parent="@style/TextStyle2">
         <item name="android:textSize">20sp</item>
     </style>
-    <!-- Override MyButton style for AppThemeDark -->
-    <style name ="AppThemeDarkTextBlockStyle" parent="@style/TextBlockStyle">
-        <item name="android:textSize">40sp</item>
+
+    <!-- Large Size override styles -->
+
+    <style name="TextStyle1LargeFont" parent="@style/TextStyle1">
+        <item name="android:textSize">38sp</item>
     </style>
+
+    <style name ="TextStyle2LargeFont" parent="@style/TextStyle2">
+        <item name="android:textSize">30sp</item>
+    </style>
+
 
 </resources>

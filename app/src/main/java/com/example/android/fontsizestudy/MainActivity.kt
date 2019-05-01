@@ -9,22 +9,38 @@ import android.content.Intent
 
 class MainActivity : AppCompatActivity() {
 
+    companion object {
+        const val SMALL_FONT = "Small"
+        const val MEDIUM_FONT = "Medium"
+        const val LARGE_FONT = "Large"
+        const val FONT_SIZE_KEY = "FONT_SIZE"
+        const val PACKAGE_NAME = "com.example.android.fontsizestudy"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
-        val settings = getSharedPreferences("com.example.android.fontsizestudy", Context.MODE_PRIVATE)
+        val settings = getSharedPreferences(PACKAGE_NAME, Context.MODE_PRIVATE)
 
-        val fontSizePref = settings.getString("FONT_SIZE", "Medium")
+        val fontSizePref = settings.getString(FONT_SIZE_KEY, MEDIUM_FONT)
 
-        var themeId = R.style.Theme_TextMedium
-        if (fontSizePref == "Small") {
-            themeId = R.style.Theme_TextSmall
-        } else if (fontSizePref == "Large") {
-            themeId = R.style.Theme_TextLarge
+        // Default size
+        var themeId = R.style.ThemeMediumFont
+
+        when (fontSizePref) {
+            SMALL_FONT -> {
+                themeId = R.style.ThemeSmallFont
+            }
+            LARGE_FONT -> {
+                themeId = R.style.ThemeLargeFont
+            }
+            else -> { }
         }
 
         setTheme(themeId)
 
+        // Theme must be set before onCreate
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         btnSmall.setOnClickListener {
             setSmallTheme()
         }
@@ -38,25 +54,26 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    // Helper functions for setting new theme, activity must be reset to see changes on current screen
     private fun setSmallTheme() {
-        val settings = getSharedPreferences("com.example.android.fontsizestudy", Context.MODE_PRIVATE)
-        settings.edit().putString("FONT_SIZE", "Small").apply()
+        val settings = getSharedPreferences(PACKAGE_NAME, Context.MODE_PRIVATE)
+        settings.edit().putString(FONT_SIZE_KEY, SMALL_FONT).apply()
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
         finish()
     }
 
     private fun setMediumTheme() {
-        val settings = getSharedPreferences("com.example.android.fontsizestudy", Context.MODE_PRIVATE)
-        settings.edit().putString("FONT_SIZE", "Medium").apply()
+        val settings = getSharedPreferences(PACKAGE_NAME, Context.MODE_PRIVATE)
+        settings.edit().putString(FONT_SIZE_KEY, MEDIUM_FONT).apply()
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
         finish()
     }
 
     private fun setLargeTheme() {
-        val settings = getSharedPreferences("com.example.android.fontsizestudy", Context.MODE_PRIVATE)
-        settings.edit().putString("FONT_SIZE", "Large").apply()
+        val settings = getSharedPreferences(PACKAGE_NAME, Context.MODE_PRIVATE)
+        settings.edit().putString(FONT_SIZE_KEY, LARGE_FONT).apply()
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
         finish()
